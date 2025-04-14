@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/style.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
 </head>
-
+<style></style>
 <body>
     <header>
         <x-Frontend-navbar />

@@ -2,59 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Mail\SellerRequestNotification;
-use Illuminate\Http\Request;
-use App\Models\Seller;
 use App\Models\Admin;
 use App\Models\Product;
-
-use App\Mail\SendRequestNotification;
-use Illuminate\Support\Facades\Mail;
+use App\Models\Seller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
     public function home()
     {
-        $available_product = Product::where('stock',true)->where('discount','>',0)->get();
-        return view('frontend.home',compact('available_product'));
+        $available_product= Product::where('stock', true)->where('discount', '>', 0)->get();
+        return view('frontend.home', compact('available_product'));
     }
 
-    public function sellerstore(Request $request)
+    public function about()
     {
-        // Validate the incoming request data
+        return view('frontend.about');
+    }
+
+    public function seller_store(Request $request)
+    {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:sellers,email',
+            'email' => 'required|email|unique:sellers',
+            'contact_number' => 'required',
             'address' => 'required',
-            'phone' => 'required',
             'pan_no' => 'required',
-            'reg_no' => 'required'
+            'reg_no' => 'required',
         ]);
 
-        // Create a new seller instance and populate it
         $seller = new Seller();
         $seller->name = $request->name;
-        $seller->phone = $request->phone;
         $seller->email = $request->email;
+        $seller->contact_number = $request->contact_number;
         $seller->address = $request->address;
         $seller->pan_no = $request->pan_no;
-        $seller->password = Hash::make(uniqid());
         $seller->reg_no = $request->reg_no;
-
-        // Save the seller to the database
+        $seller->password = Hash::make(uniqid());
         $seller->save();
 
         $data = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact_number' => $request->contact_number,
         ];
-
         $admins = Admin::all();
-    
-        foreach ($admins as $admin) {
-            Mail::to($admin->email)->send(new SellerRequestNotification($data));
-        }
+        // foreach ($admins as $admin) {
+        //     Mail::to($admin->email)->send(new SellerRequestNotification());
+        // }
+        Mail::to($admins)->send(new SellerRequestNotification($data));
+        return redirect()->route('homepage');
     }
+
+    public function compare(Request $request)
+    {
+        $q = $request->q;
+        $results = Product::where('name', "like", "%$q%")->orderBy('price', 'asc')->get();
+        return view('frontend.compare', compact('results', 'q'));
+    }
+
+    
+  public function product($id)
+  {
+      $product = Product::find($id);
+      if(!$product)
+      {
+        return view('frontend.error');
+      }
+      return view('frontend.product',compact('product'));
+  }
 }

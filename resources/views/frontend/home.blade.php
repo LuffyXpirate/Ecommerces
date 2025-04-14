@@ -5,9 +5,7 @@
                 Register Your Business
             </h1>
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad dolorum corporis perspiciatis possimus
-                repudiandae, suscipit nesciunt laboriosam aut eaque eveniet sit explicabo, perferendis autem dolorem
-                facilis obcaecati maxime incidunt blanditiis.
+                Start your business journey on the right foot by registering with us. We make the process simple and efficient, ensuring that you comply with all legal requirements. With our expert guidance, you can focus on growing your business while we handle the paperwork, making it easier for you to establish a strong, credible presence in the market.
             </p>
             <div>
                 <button data-modal-target="request-modal" data-modal-toggle="request-modal" type="button"
