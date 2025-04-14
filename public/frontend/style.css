@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --primary-color: #e63946;
+    --secondary-color: #1d3557;
+    --text-color: #4a4a4a;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: "Winky Sans", sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #d00000;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #14213d;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py-2 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow);
+}
+
+nav {
+    background-color: var(--white);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+nav img {
+    height: 48px;
+    object-fit: contain;
+}
+
+nav form {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border: 1px solid #e0e0e0;
+    border-radius: 50px; /* More rounded for a modern e-commerce look */
+    padding: 8px 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+}
+
+nav form:hover {
+    border-color: var(--primary-color); /* Subtle interaction feedback */
+}
+
+nav input[type="search"] {
+    border: none;
+    background: transparent;
+    padding: 8px 10px;
+    outline: none;
+    font-size: 15px;
+    width: 200px; /* Fixed width for consistency */
+    font-family: "Winky Sans", sans-serif;
+}
+
+nav form button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color); /* Ties in with primary color */
+    font-size: 16px;
+    padding: 8px;
+    transition: color 0.3s ease;
+}
+
+nav form button:hover {
+    color: #d00000; /* Matches btn-primary hover */
+}
+
+nav .flex {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 500;
+}
